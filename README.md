@@ -180,94 +180,9 @@ U_sinc, V_sinc, W_sinc = generate_turbulence(
 )
 ```
 
-## Visualization
-
-### Basic Plotting with Plots.jl
-
-```julia
-using Plots
-
-# Plot Mann spectra
-kx = 10 .^ range(-5, 2, length=100)
-Suu, Svv, Sww, Suw = mann_spectra(kx, params)
-
-plot(kx, [Suu Svv Sww], 
-     xscale=:log10, yscale=:log10,
-     xlabel="Wave number kx [rad/m]", 
-     ylabel="Spectral density [m³/s²]",
-     label=["Suu" "Svv" "Sww"],
-     title="Mann Velocity Spectra",
-     linewidth=2)
-```
-
-### Turbulence Field Visualization
-
-```julia
-# Generate turbulence for visualization
-U, V, W = generate_turbulence(params, 100.0, 100.0, 100.0, 64, 64, 64)
-
-# Plot cross-sections
-x = range(0, 100, length=64)
-y = range(0, 100, length=64)
-
-# Streamwise velocity at mid-height
-p1 = heatmap(x, y, U[:, :, 32]', 
-            xlabel="x [m]", ylabel="y [m]", 
-            title="U velocity at z=50m",
-            color=:RdBu)
-
-# Vertical velocity at mid-height  
-p2 = heatmap(x, y, W[:, :, 32]',
-            xlabel="x [m]", ylabel="y [m]",
-            title="W velocity at z=50m", 
-            color=:RdBu)
-
-plot(p1, p2, layout=(1,2), size=(800,300))
-```
-
-### 3D Visualization
-
-```julia
-# Plot 3D isosurfaces of turbulence intensity
-using PlotlyJS  # For 3D plotting
-
-turbulence_intensity = sqrt.(U.^2 + V.^2 + W.^2)
-
-# Create 3D coordinate arrays
-x = range(0, 100, length=64)
-y = range(0, 100, length=64) 
-z = range(0, 100, length=64)
-
-# Plot isosurface
-plot(x, y, z, turbulence_intensity,
-     st=:volume,
-     alpha=0.1,
-     title="Turbulence Intensity")
-```
-
-### Statistical Analysis Plots
-
-```julia
-# Analyze turbulence statistics
-stats = validate_turbulence_statistics(U, V, W)
-
-# Plot velocity histograms
-p1 = histogram(U[:], bins=50, alpha=0.7, label="U", normalize=:pdf)
-histogram!(V[:], bins=50, alpha=0.7, label="V", normalize=:pdf)
-histogram!(W[:], bins=50, alpha=0.7, label="W", normalize=:pdf)
-xlabel!("Velocity [m/s]")
-ylabel!("Probability density")
-title!("Velocity Component Distributions")
-
-# Plot velocity correlations
-p2 = scatter(U[:], W[:], alpha=0.3, markersize=1,
-            xlabel="U velocity [m/s]", ylabel="W velocity [m/s]",
-            title="U-W Velocity Correlation")
-
-plot(p1, p2, layout=(1,2), size=(800,300))
-```
-
 ## Benchmarking
+
+TODO: Run the benchmarks fully and then update this section.
 
 ### Running Performance Tests
 
@@ -416,21 +331,6 @@ Von Kármán energy spectrum function.
 vonkarman_spectrum(ae, k, L) → Float64
 ```
 
-### Full Documentation
-
-For complete API documentation with detailed mathematical formulations, see:
-- **Stable docs**: [https://abraemer.github.io/MannTurbulence.jl/stable/](https://abraemer.github.io/MannTurbulence.jl/stable/)
-- **Development docs**: [https://abraemer.github.io/MannTurbulence.jl/dev/](https://abraemer.github.io/MannTurbulence.jl/dev/)
-
-## Examples and Tutorials
-
-Additional examples can be found in the `examples/` directory:
-- Basic turbulence generation
-- Spectral analysis workflows  
-- Parameter sensitivity studies
-- Validation against measurements
-- Performance optimization techniques
-
 ## Contributing
 
 Contributions are welcome! Please see the contributing guidelines and open an issue or pull request.
@@ -439,21 +339,7 @@ Contributions are welcome! Please see the contributing guidelines and open an is
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Citation
-
-If you use this package in your research, please cite:
-
-```bibtex
-@software{MannTurbulence.jl,
-  author = {Adrian Braemer},
-  title = {MannTurbulence.jl: Mann Turbulence Model Implementation in Julia},
-  url = {https://github.com/abraemer/MannTurbulence.jl},
-  version = {1.0.0},
-  year = {2024}
-}
-```
-
 ## References
-
+This is a AI-powered translation of [Mann.rs](https://github.com/jaimeliew1/Mann.rs)
 1. Mann, J. (1994). The spatial structure of neutral atmospheric surface-layer turbulence. Journal of Fluid Mechanics, 273, 141-168.
 2. Mann, J. (1998). Wind field simulation. Probabilistic Engineering Mechanics, 13(4), 269-282.
