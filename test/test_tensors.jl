@@ -2,26 +2,12 @@
 Tests for tensor operations using Rust reference data.
 """
 
-using Test
-using JSON3
 using MannTurbulence
 using LinearAlgebra
 using Statistics
 using FFTW
 
-# Test tolerance for numerical comparisons
 const TEST_TOLERANCE = 1e-5
-
-"""
-    load_test_data(filename::String) -> Dict
-
-Load test data from JSON file.
-"""
-function load_test_data(filename::String)
-    filepath = joinpath(@__DIR__, "..", "..", "Mann.rs", "test_data", filename)
-    return JSON3.read(read(filepath, String))
-end
-
 
 @testset "Basic Functions" begin
     @testset "lifetime_approx" begin

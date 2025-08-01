@@ -3,6 +3,8 @@ using Test
 using Aqua
 using JET
 
+include("test_helpers.jl")
+
 @testset "MannTurbulence.jl" begin
     # @testset "Code quality (Aqua.jl)" begin
     #     Aqua.test_all(MannTurbulence)
@@ -10,9 +12,10 @@ using JET
     # @testset "Code linting (JET.jl)" begin
     #     JET.test_package(MannTurbulence; target_defined_modules = true)
     # end
+
     # Include tensor tests
-    include("test_tensors.jl")
-    
+    @testset "tensors.jl" include("test_tensors.jl")
+
     # Include spectra tests
-    include("test_spectra.jl")
+    @testset "spectra.jl" include("test_spectra.jl")
 end

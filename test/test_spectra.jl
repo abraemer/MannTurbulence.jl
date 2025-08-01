@@ -5,14 +5,11 @@ Tests the MannParameters struct, spectral tensor calculations, Mann spectra comp
 and turbulence generation against reference data from the Rust implementation.
 """
 
-using Test
-using JSON3
 using Statistics
 using LinearAlgebra
 using MannTurbulence
 
-# Test tolerance
-const TOL = 1e-5
+const TEST_TOLERANCE = 1e-5
 
 @testset "Spectral Generation Tests" begin
     
@@ -135,10 +132,8 @@ const TOL = 1e-5
     @testset "Mann Spectra Tests" begin
         @testset "Against Rust Reference Data" begin
             # Load reference data from Rust implementation
-            test_data_path = joinpath(@__DIR__, "..", "..", "Mann.rs", "test_data", "mann_spectra.json")
-            
-            if isfile(test_data_path)
-                test_data = JSON3.read(read(test_data_path, String))
+            if test_data_exists("mann_spectra.json")
+                test_data = load_test_data("mann_spectra.json")
                 
                 # Extract parameters
                 γ = test_data["parameters"]["gamma"]
@@ -169,7 +164,7 @@ const TOL = 1e-5
                 
                 println("Mann spectra test passed with tolerance $tolerance")
             else
-                @warn "Reference data file not found: $test_data_path"
+                @warn "Reference data file not found: mann_spectra.json"
                 @test_skip "Mann spectra validation against Rust data"
             end
         end
@@ -269,9 +264,9 @@ const TOL = 1e-5
             
             # Generate with parallel and serial
             U_par, V_par, W_par = generate_turbulence(params, Lx, Ly, Lz, Nx, Ny, Nz, 
-                                                     seed=42, parallel=true)
+                                                    seed=42, parallel=true)
             U_ser, V_ser, W_ser = generate_turbulence(params, Lx, Ly, Lz, Nx, Ny, Nz, 
-                                                     seed=42, parallel=false)
+                                                    seed=42, parallel=false)
             
             # Results should be identical (same algorithm, same seed)
             @test U_par ≈ U_ser
@@ -307,11 +302,8 @@ const TOL = 1e-5
         
         @testset "Against Rust Reference Data" begin
             # Load reference data for deterministic turbulence generation
-            test_data_path = joinpath(@__DIR__, "..", "..", "Mann.rs", "test_data", 
-                                    "deterministic_turbulence_generation.json")
-            
-            if isfile(test_data_path)
-                test_data = JSON3.read(read(test_data_path, String))
+            if test_data_exists("deterministic_turbulence_generation.json")
+                test_data = load_test_data("deterministic_turbulence_generation.json")
                 
                 # Extract parameters
                 ae = test_data["parameters"]["ae"]
@@ -352,7 +344,7 @@ const TOL = 1e-5
                 
                 println("Deterministic turbulence generation test passed")
             else
-                @warn "Reference data file not found: $test_data_path"
+                @warn "Reference data file not found: deterministic_turbulence_generation.json"
                 @test_skip "Turbulence generation validation against Rust data"
             end
         end

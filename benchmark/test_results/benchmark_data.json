@@ -1,0 +1,126 @@
+[
+    {
+        "name": "tensor_generation_Isotropic",
+        "grid_size": 32,
+        "mean_time": 0.000266098,
+        "std_time": 2.3357151196154043e-5,
+        "min_time": 0.000249582,
+        "max_time": 0.000282614,
+        "memory_usage": 736000,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:08.479",
+        "additional_info": {
+            "tensor_type": "Isotropic",
+            "n_samples": 1000
+        }
+    },
+    {
+        "name": "tensor_generation_Sheared",
+        "grid_size": 32,
+        "mean_time": 0.000625801,
+        "std_time": 2.49467272402609e-6,
+        "min_time": 0.000624037,
+        "max_time": 0.000627565,
+        "memory_usage": 1728000,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:08.493",
+        "additional_info": {
+            "tensor_type": "Sheared",
+            "n_samples": 1000
+        }
+    },
+    {
+        "name": "turbulence_generation",
+        "grid_size": 32,
+        "mean_time": 0.15023957599999999,
+        "std_time": 0.14992497006195712,
+        "min_time": 0.044226613,
+        "max_time": 0.256252539,
+        "memory_usage": 40810296,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:09.845",
+        "additional_info": {
+            "parallel": false,
+            "valid_runs": 2
+        }
+    },
+    {
+        "name": "turbulence_generation",
+        "grid_size": 32,
+        "mean_time": 0.012096341,
+        "std_time": 0.0007143334124902734,
+        "min_time": 0.011591231,
+        "max_time": 0.012601451,
+        "memory_usage": 35297648,
+        "allocations": 0,
+        "parallel": true,
+        "timestamp": "2025-08-01T16:49:09.966",
+        "additional_info": {
+            "parallel": true,
+            "valid_runs": 2
+        }
+    },
+    {
+        "name": "spectra_computation",
+        "grid_size": 10,
+        "mean_time": 0.0256606655,
+        "std_time": 0.002201393822567988,
+        "min_time": 0.024104045,
+        "max_time": 0.027217286,
+        "memory_usage": 77069728,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:10.043",
+        "additional_info": {
+            "kx_size": 10
+        }
+    },
+    {
+        "name": "spectra_computation",
+        "grid_size": 50,
+        "mean_time": 0.126971707,
+        "std_time": 0.0018211676570815752,
+        "min_time": 0.125683947,
+        "max_time": 0.128259467,
+        "memory_usage": 385342432,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:10.425",
+        "additional_info": {
+            "kx_size": 50
+        }
+    },
+    {
+        "name": "spectra_computation",
+        "grid_size": 100,
+        "mean_time": 0.251917483,
+        "std_time": 0.0019722396066684873,
+        "min_time": 0.250522899,
+        "max_time": 0.253312067,
+        "memory_usage": 770683424,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:11.185",
+        "additional_info": {
+            "kx_size": 100
+        }
+    },
+    {
+        "name": "spectra_computation",
+        "grid_size": 200,
+        "mean_time": 0.498797935,
+        "std_time": 0.0019192702376898145,
+        "min_time": 0.497440806,
+        "max_time": 0.500155064,
+        "memory_usage": 1541364768,
+        "allocations": 0,
+        "parallel": false,
+        "timestamp": "2025-08-01T16:49:12.686",
+        "additional_info": {
+            "kx_size": 200
+        }
+    }
+]
