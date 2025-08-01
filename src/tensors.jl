@@ -343,7 +343,7 @@ function decomp(sinc_gen::ShearedSinc{T}, K::AbstractVector{T}) where T<:Abstrac
         for j in 1:i
             if i == j
                 # Diagonal elements
-                sum_sq = sum(L[j, k]^2 for k in 1:(j-1))
+                sum_sq = j > 1 ? sum(L[j, k]^2 for k in 1:(j-1)) : zero(T)
                 val = tensor_matrix[j, j] - sum_sq
                 if val <= 0.0
                     throw(ArgumentError("Matrix is not positive definite"))
@@ -351,7 +351,7 @@ function decomp(sinc_gen::ShearedSinc{T}, K::AbstractVector{T}) where T<:Abstrac
                 L[i, j] = sqrt(val)
             else
                 # Off-diagonal elements
-                sum_prod = sum(L[i, k] * L[j, k] for k in 1:(j-1))
+                sum_prod = j > 1 ? sum(L[i, k] * L[j, k] for k in 1:(j-1)) : zero(T)
                 if L[j, j] <= 0.0
                     throw(ArgumentError("Matrix is not positive definite"))
                 end

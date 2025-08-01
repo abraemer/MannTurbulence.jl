@@ -12,4 +12,7 @@ using JET
     # end
     # Include tensor tests
     include("test_tensors.jl")
+    
+    # Include spectra tests
+    include("test_spectra.jl")
 end
