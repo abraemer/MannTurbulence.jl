@@ -24,7 +24,7 @@ params = data["parameters"]
 ```
 """
 function load_test_data(filename::String)
-    filepath = joinpath(@__DIR__, "..", "..", "Mann.rs", "test_data", filename)
+    filepath = joinpath(@__DIR__, "test_data", filename)
     if !isfile(filepath)
         error("Test data file not found: $filepath")
     end

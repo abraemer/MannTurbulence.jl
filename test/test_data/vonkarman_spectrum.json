@@ -1,0 +1,17 @@
+{
+  "name": "vonkarman_spectrum",
+  "parameters": {
+    "ae": 2.0,
+    "L": 2.0,
+    "k": 2.0
+  },
+  "inputs": {},
+  "outputs": {
+    "spectrum_value": 0.530535876750946,
+    "expected_value": 0.5305357575416565
+  },
+  "metadata": {
+    "test_type": "vonkarman_spectrum",
+    "tolerance": 9.999999747378752e-6
+  }
+}

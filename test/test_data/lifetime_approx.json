@@ -1,0 +1,15 @@
+{
+  "name": "lifetime_approx",
+  "parameters": {
+    "kL": 1.0
+  },
+  "inputs": {},
+  "outputs": {
+    "expected_value": 1.2341233491897583,
+    "lifetime_value": 1.2341234683990479
+  },
+  "metadata": {
+    "tolerance": 9.999999747378752e-6,
+    "test_type": "lifetime_approximation"
+  }
+}
