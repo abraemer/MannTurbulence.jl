@@ -6,14 +6,23 @@
 [![Aqua](https://raw.githubusercontent.com/JuliaTesting/Aqua.jl/master/badge.svg)](https://github.com/JuliaTesting/Aqua.jl)
 
 # Current status
-DISCLAIMER: This is a (largely) AI-generated translation of [Mann.rs](https://github.com/jaimeliew1/Mann.rs) by Jaime Liew.
-
-**This definitively needs cleanup** This is the first version after ~3h time spent. Consider everything including this readme as preliminary.
+**DISCLAIMER:** This is a (largely) AI-generated translation of [Mann.rs](https://github.com/jaimeliew1/Mann.rs) by Jaime Liew.
+This is the first version after ~3h time spent. Consider everything including this readme as preliminary.
+**This definitively needs cleanup** 
 
 ## Tools used
 Roo Code with:
 - [TNG R1T2 Chimera](https://openrouter.ai/tngtech/deepseek-r1t2-chimera:free) as Orchestrator and Architect
 - [Claude Sonnet 4](https://openrouter.ai/anthropic/claude-sonnet-4) as Coder
+
+## TODO braindump
+- Cleanup code:
+  - Redundant exports
+  - Unused functions, integration could use NumericalIntegration.jl, cholesky should use LinearAlgebra.jl
+  - Code organization: Make type structure + interface clearer
+  - Improvements: It seems that a lot of (all?) matrices are small (3x3?) -> use StaticArrays.jl
+- Change benchmark code to follow PkgBenchmarks.jl more (and run proper benchmarks)
+- Think about how to integrate Mann.rs for test data generation and comparisons in benchmarks
 
 # Rest of AI generated Readme
 A Julia implementation of the Mann turbulence model for generating synthetic atmospheric turbulence fields. This package provides efficient spectral tensor calculations and 3D turbulence box generation using FFT-based methods.
